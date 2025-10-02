@@ -4,7 +4,7 @@ export interface Equipos {
     readonly type: string;
     readonly Ram: string;
     fechaEntrega: Date;
-    readonly motivo: "distruibicion" | "mantenimiento";
+    readonly motivo: "distribucion" | "mantenimiento";
     readonly necesidad?: string;
     readonly fechaIngreso?: Date;
 }
