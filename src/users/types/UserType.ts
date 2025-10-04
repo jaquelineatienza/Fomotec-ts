@@ -1,6 +1,6 @@
-export interface IUser {
-    readonly id: any
+export interface IAdmin {
     readonly email: string;
     readonly password: string;
-    readonly rol: string;
+    readonly rol: "admin";
+
 }

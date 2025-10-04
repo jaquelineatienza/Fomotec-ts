@@ -8,7 +8,8 @@ export class UpdateEquipoService implements IUpdateEquipo {
     constructor(
         private readonly updateEquipoService: IUpdateEquipo
     ) { }
-    async updateEquipo(id: any, equipo: Partial<Equipos>): Promise<Equipos | null> {
-        return await this.updateEquipoService.updateEquipo(id, equipo)
+
+    async updateEquipo(id: any, idUser: string, equipo: Partial<Equipos>): Promise<Equipos | null> {
+        return await this.updateEquipoService.updateEquipo(id, idUser, equipo)
     }
 }

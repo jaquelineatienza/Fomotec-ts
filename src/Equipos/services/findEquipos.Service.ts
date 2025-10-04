@@ -11,4 +11,10 @@ export class FindEquiposService implements IFindEquipo {
     async findEquipoByID(id: any): Promise<Equipos | null> {
         return await this.equiposRepo.findEquipoByID(id)
     }
+
+    async findEquipoByUserID(id: string): Promise<Equipos[] | null> {
+        return await this.equiposRepo.findEquipoByUserID(id)
+    }
+
+
 }

@@ -13,8 +13,6 @@ export const createEquipoController = async (req: Request, res: Response) => {
         const equipo: Equipos = req.body;
         console.log(equipo)
         const result = await createEquipoService.createEquipo(equipo)
-
-
         if (!result) {
             res.status(304).json({ msg: 'the equipo no created' })
         }

@@ -17,7 +17,8 @@ const EquipoSchema = new Schema<Equipos>({
         required: true
     },
     encargado: {
-
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Users"
     },
     mejora: {
         type: String,
@@ -28,6 +29,10 @@ const EquipoSchema = new Schema<Equipos>({
     },
     Modelo: {
         type: String,
+        required: true
+    },
+    price: {
+        type: Number,
         required: true
     }
 

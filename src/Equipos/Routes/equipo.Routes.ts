@@ -9,8 +9,8 @@ import { Router } from "express";
 export const equipoRoutes = Router()
 
 
-equipoRoutes.get("/allEquipos", findEquiposControllers);
-equipoRoutes.get("/equipos/:id", findEquipoByIDController)
-equipoRoutes.post("/createEquipo", createEquipoController)
-equipoRoutes.put('/update/:id', updateEquipoController)
-equipoRoutes.delete("/delete/:id", deleteEquipoController)
+// equipoRoutes.get("/allEquipos", findEquiposControllers);
+// equipoRoutes.get("/equipos/:id", findEquipoByIDController)
+// equipoRoutes.post("/createEquipo", createEquipoController)
+// equipoRoutes.put('/update/:id', updateEquipoController)
+// equipoRoutes.delete("/delete/:id", deleteEquipoController)

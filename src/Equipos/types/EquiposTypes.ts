@@ -4,6 +4,7 @@ export interface Equipos {
     readonly Modelo: string;
     readonly fechaEntrega: Date;
     readonly motivo: "distribucion" | "mantenimiento";
+    readonly price: number;
     readonly encargado?: string;
     readonly mejora?: string
 }

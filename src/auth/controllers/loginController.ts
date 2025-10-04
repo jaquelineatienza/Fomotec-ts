@@ -1,6 +1,6 @@
-import { generarJWT } from "auth/helpers/generarJWT";
 import { LoginService } from "auth/Services/Login.Service";
 import { Request, Response } from "express";
+import { generarJWT } from "helpers/generarJWT";
 import { findByEmail } from "users/mongoRepository/UserMongo.Repository";
 import { IFindByEmail } from "users/repositories/FindByEmail";
 
