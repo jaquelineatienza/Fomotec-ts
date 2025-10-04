@@ -1,6 +1,7 @@
+import { ID } from "@config/id.type";
 
 
 
 export interface IDeleteEquipo {
-    deleteEquipo(id: any): void
+    deleteEquipo(id: ID): void
 }

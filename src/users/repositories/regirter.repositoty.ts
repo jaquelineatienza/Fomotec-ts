@@ -1,6 +1,6 @@
-import { IAdmin } from "users/types/UserType";
+import { IUser } from "users/types/UserType";
 
 
 export interface IRegisterRepoAdmin {
-    createUser(user: IAdmin, token?: string): Promise<IAdmin>
+    createUser(user: IUser, token?: string): Promise<IUser>
 }

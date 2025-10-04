@@ -1,18 +1,19 @@
 import { IRegisterRepoAdmin } from "users/repositories/regirter.repositoty";
-import { IAdmin } from "users/types/UserType";
+import { IUser } from "users/types/UserType";
 import * as bcrypt from "bcrypt-ts";
 import { FindTokenAdminMongo } from "TokenAdmin/MongoRepository/TokenAdminMongo";
 import { fakeEmail } from "helpers/fakeEmails";
+import { IFindByEmail } from "users/repositories/FindByEmail";
 
 
 export class Register implements IRegisterRepoAdmin {
     constructor(
-        private readonly registAdminRepo: IRegisterRepoAdmin
+        private readonly registAdminRepo: IRegisterRepoAdmin,
+        private readonly uniqueEmail: IFindByEmail
     ) { }
 
-    async createUser(user: IAdmin, token?: string): Promise<IAdmin> {
-        fakeEmail(user.email);
-
+    async createUser(user: IUser, token?: string): Promise<IUser> {
+        console.log(token)
         if (!token) {
             throw new Error("Persona no autorizada para registrarse");
         }
@@ -24,10 +25,16 @@ export class Register implements IRegisterRepoAdmin {
             throw new Error("Token incorrecto o inexistente");
         }
 
+        const findEmail = await this.uniqueEmail.findByEmail(user.email);
+        if (findEmail) {
+            throw new Error("Email no disponible ");
+
+        }
         const hashedPassword = await bcrypt.hash(user.password, 10);
 
         return this.registAdminRepo.createUser({
             ...user,
+            rol: "admin",
             password: hashedPassword,
         });
     }

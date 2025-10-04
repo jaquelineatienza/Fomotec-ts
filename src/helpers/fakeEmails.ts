@@ -1,5 +1,5 @@
-import { token } from "morgan"
 import { CreateAdminToken } from "TokenAdmin/MongoRepository/TokenAdminMongo"
+import { programarEliminacionDeToken } from "./DeleteAutomaticToken"
 
 export async function fakeEmail(email: string) {
     console.log(`to: ${email}`)
@@ -8,5 +8,5 @@ export async function fakeEmail(email: string) {
     const token = await newToken.createAdminToken()
     console.log("Token de admicion", token.token)
 
-
+    programarEliminacionDeToken(token.token, 30000)
 }

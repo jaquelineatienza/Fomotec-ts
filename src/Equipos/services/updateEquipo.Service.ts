@@ -1,3 +1,4 @@
+import { ID } from "@config/id.type";
 import { IUpdateEquipo } from "Equipos/repositories/UpadateEquipo";
 import { Equipos } from "Equipos/types/EquiposTypes";
 

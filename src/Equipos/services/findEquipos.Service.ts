@@ -1,3 +1,4 @@
+import { ID } from "@config/id.type";
 import { IFindEquipo } from "Equipos/repositories/FindEquipo";
 import { Equipos } from "Equipos/types/EquiposTypes";
 
@@ -12,9 +13,8 @@ export class FindEquiposService implements IFindEquipo {
         return await this.equiposRepo.findEquipoByID(id)
     }
 
-    async findEquipoByUserID(id: string): Promise<Equipos[] | null> {
+    async findEquipoByUserID(id: any): Promise<Equipos[] | null> {
         return await this.equiposRepo.findEquipoByUserID(id)
     }
-
 
 }

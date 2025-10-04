@@ -1,3 +1,4 @@
+import { ID } from "@config/id.type";
 import { IDeleteEquipo } from "Equipos/repositories/DeleteEquipo";
 
 

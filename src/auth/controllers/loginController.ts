@@ -1,13 +1,18 @@
 import { LoginService } from "auth/Services/Login.Service";
 import { Request, Response } from "express";
 import { generarJWT } from "helpers/generarJWT";
-import { findByEmail } from "users/mongoRepository/UserMongo.Repository";
+import { FindByEmailMongo } from "users/mongoRepository/UserMongoRepo";
 import { IFindByEmail } from "users/repositories/FindByEmail";
 
-const loginMongo: IFindByEmail = new findByEmail()
+declare module "express-session" {
+    interface SessionData {
+        token?: string;
+        isLoggedIn?: boolean;
+    }
+}
+
+const loginMongo: IFindByEmail = new FindByEmailMongo()
 const loginService = new LoginService(loginMongo)
-
-
 
 
 export const login = async (req: Request, res: Response) => {
@@ -19,7 +24,9 @@ export const login = async (req: Request, res: Response) => {
             res.status(400).json({ msg: 'Credenciales incorrectas' });
         } else {
             const id = result.id
-            const token = await generarJWT(id, result.rol);
+            const token = await generarJWT(id, result.rol) as string;
+            req.session.token = token;
+            req.session.isLoggedIn = true
 
 
             res.cookie("token", token, {

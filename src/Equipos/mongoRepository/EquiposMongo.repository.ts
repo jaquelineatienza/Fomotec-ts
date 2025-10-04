@@ -1,3 +1,4 @@
+import { ID } from "@config/id.type";
 import { EquipoModel } from "Equipos/Models/Equipos.Model";
 import { ICreateEquipo } from "Equipos/repositories/createEquipo";
 import { IDeleteEquipo } from "Equipos/repositories/DeleteEquipo";
@@ -13,6 +14,9 @@ export class CreateEquipo implements ICreateEquipo {
 }
 
 export class FindEquipo implements IFindEquipo {
+    async findEquipoByUserID(id: ID): Promise<Equipos[] | null> {
+        return await EquipoModel.find({ userId: id })
+    }
     async findEquipoByID(id: any): Promise<Equipos | null> {
         return await EquipoModel.findById(id)
     }
@@ -21,12 +25,20 @@ export class FindEquipo implements IFindEquipo {
     }
 }
 export class UpdateEquipo implements IUpdateEquipo {
-    async updateEquipo(id: any, equipo: Partial<Equipos>): Promise<Equipos | null> {
-        return await EquipoModel.findByIdAndUpdate(id, equipo, { new: true })
+    async updateEquipo(
+        id: ID,
+        userId: string,
+        equipo: Partial<Equipos>
+    ): Promise<Equipos | null> {
+        return await EquipoModel.findOneAndUpdate(
+            { _id: id, encargado: userId },
+            equipo,
+            { new: true }
+        );
     }
 }
 export class DelteEquipoMongo implements IDeleteEquipo {
-    async deleteEquipo(id: any): Promise<void> {
+    async deleteEquipo(id: ID): Promise<void> {
         await EquipoModel.findByIdAndDelete(id)
     }
 }

@@ -1,5 +1,6 @@
+import { ID } from "@config/id.type";
 import { Equipos } from "Equipos/types/EquiposTypes";
 
 export interface IUpdateEquipo {
-    updateEquipo(id: any, idUser: string, equipo: Partial<Equipos>): Promise<Equipos | null>
+    updateEquipo(id: ID, idUser: string, equipo: Partial<Equipos>): Promise<Equipos | null>
 }
