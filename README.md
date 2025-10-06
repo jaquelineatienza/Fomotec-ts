@@ -1,7 +1,3 @@
-Excelente base 💪 — tu README ya tiene buena estructura y contenido técnico.
-Aquí te dejo una **versión mejorada, más limpia, profesional y legible**, con formato Markdown correcto, encabezados consistentes, emojis organizativos y ejemplos bien presentados.
-También he mejorado la redacción y fluidez para que se vea como documentación de nivel empresarial o académico.
-
 ---
 
 # 🧾 **Sistema de Inventario — FORMOTEX**
