@@ -13,9 +13,10 @@ export class Register implements IRegisterRepoAdmin {
     ) { }
 
     async createUser(user: IUser, token?: string): Promise<IUser> {
+        console.log(user)
         console.log(token)
         if (!token) {
-            throw new Error("Persona no autorizada para registrarse");
+            throw new Error("Persona no proporcionado");
         }
 
         const tokens = new FindTokenAdminMongo();

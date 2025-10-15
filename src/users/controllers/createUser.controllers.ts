@@ -13,7 +13,6 @@ const createUserService = new CreateUserService(createUserMongo, uniqueEmail)
 export const createUser = async (req: Request, res: Response) => {
     try {
         const user: IUser = req.body;
-        validarUsuario(user)
         const result = await createUserService.createUser(user)
         if (!result) {
             res.status(304).json({ msg: 'User no created' })

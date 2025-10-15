@@ -3,6 +3,7 @@ import { CrearEquiposService } from "Equipos/services/createEquipo.Service";
 import { CreateEquipo } from "Equipos/mongoRepository/EquiposMongo.repository";
 import { Equipos } from "Equipos/types/EquiposTypes";
 import { Request, Response } from "express";
+import { EquipoValidations } from "helpers/validations/equipo.validations";
 
 
 const equipoRepoMongo: ICreateEquipo = new CreateEquipo();
@@ -12,6 +13,7 @@ export const createEquipoController = async (req: Request, res: Response) => {
     try {
         const equipo: Equipos = req.body;
 
+        EquipoValidations(equipo)
 
         const result = await createEquipoService.createEquipo(equipo)
         if (!result) {

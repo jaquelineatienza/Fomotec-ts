@@ -20,7 +20,6 @@ export const RegisterAmdmins = async (req: Request, res: Response) => {
     try {
         const user: IUser = req.body;
         const token = req.body.token;
-        validarUsuario(user)
         const result = await registerService.createUser(user, token);
         if (!result) {
             res.status(304).json({ msg: 'the user not creadet' })
